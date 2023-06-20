@@ -21,7 +21,7 @@ class FetchDataProvider with ChangeNotifier {
     changeLoading();
   }
 
-  void getMoreProducts() {
+  void fetchMoreData() {
     _products.addAll(_products);
     notifyListeners();
   }
