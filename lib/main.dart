@@ -7,6 +7,8 @@ import 'product/providers/fetch_data_provider.dart';
 import 'product/screens/home_screen.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
   runApp(
     MultiProvider(
       providers: [

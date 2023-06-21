@@ -16,9 +16,13 @@ dependencies:
   provider: ^6.0.5
 
   # network
-  dio: ^5.2.1+1
+  dio: ^5.2.1
   json_serializable: ^6.7.0
   json_annotation: ^4.8.1
+
+  # log manager
+  logger: ^1.4.0
+
 
   cupertino_icons: ^1.0.2
 

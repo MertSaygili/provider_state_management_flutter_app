@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:provider_state_management_flutter_app/feature/models/product_model.dart';
-import 'package:provider_state_management_flutter_app/feature/network/service/fetch_network_data_service.dart';
+import '../../feature/models/product_model.dart';
+import '../../feature/network/service/fetch_network_data_service.dart';
 
 class FetchDataProvider with ChangeNotifier {
   final FetchNetworkDataService _fetchNetworkDataService = FetchNetworkDataService();
   List<ProductModel> _products = [];
+  ProductModel _singleProduct = ProductModel();
   bool _isLoading = false;
 
   List<ProductModel> get products => _products;
+  List<ProductModel> get singleProduct => _products;
   bool get isLoading => _isLoading;
 
   void changeLoading() {
@@ -15,9 +17,15 @@ class FetchDataProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> fetchData() async {
+  Future<void> fetchAllProducts() async {
     changeLoading();
-    _products = await _fetchNetworkDataService.fetchNetworkData();
+    _products = await _fetchNetworkDataService.fetchAllProducts();
+    changeLoading();
+  }
+
+  Future<void> fetchProductById(int id) async {
+    changeLoading();
+    _singleProduct = await _fetchNetworkDataService.fetchProductById(id);
     changeLoading();
   }
 

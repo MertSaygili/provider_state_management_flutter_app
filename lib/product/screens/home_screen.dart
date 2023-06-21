@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../feature/constants/strings.dart';
 import '../navigator.dart';
-import 'counter_screen.dart';
-import 'fetch_network_data_screen.dart';
+import 'counter/counter_screen.dart';
+import 'network/fetch_network_data_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -26,11 +26,11 @@ class _PageColumn extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         ElevatedButton(
-          onPressed: () => Navigation().navigateToDestination(context, const CounterScreen()),
+          onPressed: () => NavigatorManager().navigateToDestination(context, const CounterScreen()),
           child: const Text(Strings.counterScreenTitle),
         ),
         ElevatedButton(
-          onPressed: () => Navigation().navigateToDestination(context, const FetchNetworkDataScreen()),
+          onPressed: () => NavigatorManager().navigateToDestination(context, const FetchNetworkDataScreen()),
           child: const Text(Strings.fetchNetworkDataScreenTitle),
         )
       ],

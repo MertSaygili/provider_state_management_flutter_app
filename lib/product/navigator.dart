@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Navigation {
+class NavigatorManager {
   void navigateToDestination(BuildContext context, Widget destination) {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => destination));
   }
