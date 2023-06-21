@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../feature/constants/strings.dart';
 import '../../providers/fetch_data_provider.dart';
 
 class FetchNetworkDetailedDataScreen extends StatefulWidget {
@@ -29,7 +28,7 @@ class _FetchNetworkDetailedDataScreenState extends State<FetchNetworkDetailedDat
 }
 
 class _LoadingScreen extends StatelessWidget {
-  const _LoadingScreen({super.key});
+  const _LoadingScreen();
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +37,7 @@ class _LoadingScreen extends StatelessWidget {
 }
 
 class _LoadedScreen extends StatelessWidget {
-  const _LoadedScreen({super.key});
+  const _LoadedScreen();
   @override
   Widget build(BuildContext context) {
     return Scaffold(

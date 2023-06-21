@@ -1,4 +1,7 @@
+// ignore_for_file: unused_field
+
 import 'package:flutter/material.dart';
+
 import '../../feature/models/product_model.dart';
 import '../../feature/network/service/fetch_network_data_service.dart';
 
