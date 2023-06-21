@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:provider_state_management_flutter_app/feature/constants/strings.dart';
+
+import '../constants/strings.dart';
 
 class DioManager {
   late final Dio dio;

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:provider_state_management_flutter_app/feature/constants/strings.dart';
-import 'package:provider_state_management_flutter_app/product/navigator.dart';
-import 'package:provider_state_management_flutter_app/product/screens/counter_screen.dart';
-import 'package:provider_state_management_flutter_app/product/screens/fetch_network_data_screen.dart';
+
+import '../../feature/constants/strings.dart';
+import '../navigator.dart';
+import 'counter_screen.dart';
+import 'fetch_network_data_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:provider_state_management_flutter_app/feature/constants/strings.dart';
-import 'package:provider_state_management_flutter_app/product/providers/counter_provider.dart';
+
+import '../../feature/constants/strings.dart';
+import '../providers/counter_provider.dart';
 
 class CounterScreen extends StatelessWidget {
   const CounterScreen({super.key});

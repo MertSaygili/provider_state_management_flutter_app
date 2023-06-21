@@ -1,7 +1,8 @@
 import 'package:dio/dio.dart';
-import 'package:provider_state_management_flutter_app/feature/models/product_model.dart';
-import 'package:provider_state_management_flutter_app/feature/network/dio_manager.dart';
-import 'package:provider_state_management_flutter_app/feature/network/repo/fetch_network_data_repository.dart';
+import '../../models/product_model.dart';
+import '../dio_manager.dart';
+
+import '../repository/fetch_network_data_repository.dart';
 
 class FetchNetworkDataService extends FetchNetworkDataRepository {
   final Dio _dio = DioManager().dio;
