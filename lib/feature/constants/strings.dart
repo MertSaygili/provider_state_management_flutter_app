@@ -11,6 +11,7 @@ class Strings {
   static const String counterScreenTitle = 'Counter Screen - Provider';
   static const String fetchNetworkDataScreenTitle = 'Fetch Network Data Screen - Provider';
   static const String fetchNetworkDetailedDataScreenTitle = 'Fetch Network Detailed Data Screen - Provider';
+  static const String consumerIncrementScreenTitle = 'Consumer Increment Screen - Provider';
 
   static const String baseUrl = 'https://dummyjson.com/';
 
