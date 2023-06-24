@@ -1,5 +1,8 @@
+import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:provider_state_management_flutter_app/feature/log/log_manager.dart';
+import 'package:provider_state_management_flutter_app/feature/enums/service_enums.dart';
+import '../../exceptions/custom_service_exceptions.dart';
+import '../../log/log_manager.dart';
 import '../../models/product_model.dart';
 import '../dio_manager.dart';
 
@@ -9,38 +12,49 @@ class FetchNetworkDataService extends FetchNetworkDataRepository {
   final Dio _dio = DioManager().dio;
 
   @override
-  Future<List<ProductModel>> fetchAllProducts() async {
+  Future<Either<List<ProductModel>, CustomServiceException>> fetchAllProducts() async {
     List<ProductModel> products = [];
-    await _dio.get('/products').then((response) {
-      final data = response.data;
-      final List<dynamic> results = data['products'];
-      products = results.map((result) => ProductModel.fromJson(result)).toList();
 
-      return products;
-    }).catchError((error) {
+    try {
+      await _dio.get(ServicePathes.products.rawValue).then((response) {
+        final List<dynamic> results = response.data['products'];
+        products = results.map((result) => ProductModel.fromJson(result)).toList();
+
+        return products;
+      });
+    } catch (error) {
       // shows error log message in console
       LogManager.logger.e(error);
 
-      return products;
-    });
+      return Right(CustomServiceException(message: CustomServiceExtensionTexts.somethingWentWrongListModel, statusCode: 1));
+    }
 
-    return products;
+    if (products.isNotEmpty) {
+      return Left(products);
+    } else {
+      return Right(CustomServiceException(message: CustomServiceExtensionTexts.somethingWentWrongListModel, statusCode: 1));
+    }
   }
 
   @override
-  Future<ProductModel> fetchProductById(int id) async {
-    await _dio.get('/products/$id').then((response) {
-      final data = response.data;
-      final ProductModel product = ProductModel.fromJson(data);
-
-      return product;
-    }).catchError((error) {
+  Future<Either<ProductModel, CustomServiceException>> fetchProductById(int id) async {
+    ProductModel? product;
+    try {
+      await _dio.get('${ServicePathes.product.rawValue}$id').then((response) {
+        product = ProductModel.fromJson(response.data);
+        return product;
+      });
+    } catch (error) {
       // shows error log message in console
       LogManager.logger.e(error);
 
-      return ProductModel();
-    });
+      return Right(CustomServiceException(message: CustomServiceExtensionTexts.somethingWentWrongModel, statusCode: 1));
+    }
 
-    return ProductModel();
+    if (product != null) {
+      return Left(product!);
+    } else {
+      return Right(CustomServiceException(message: CustomServiceExtensionTexts.somethingWentWrongModel, statusCode: 1));
+    }
   }
 }

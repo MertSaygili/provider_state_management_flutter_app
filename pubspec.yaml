@@ -23,6 +23,8 @@ dependencies:
   # log manager
   logger: ^1.4.0
 
+  # dartz for network management
+  dartz: ^0.10.1
 
   cupertino_icons: ^1.0.2
 
