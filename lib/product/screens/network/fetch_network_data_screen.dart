@@ -25,7 +25,11 @@ class _FetchNetworkDataScreenState extends State<FetchNetworkDataScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text(Strings.fetchNetworkDataScreenTitle), centerTitle: true, automaticallyImplyLeading: true),
+      appBar: AppBar(
+          key: const Key('fetchNetworkDataScreenAppBar'),
+          title: const Text(Strings.fetchNetworkDataScreenTitle),
+          centerTitle: true,
+          automaticallyImplyLeading: true),
       body: !context.watch<FetchDataProvider>().errorAvailable
           ? context.watch<FetchDataProvider>().isLoading
               ? const _LoadingPage()
@@ -54,11 +58,24 @@ class _LoadedPage extends StatelessWidget {
         itemBuilder: (context, index) => InkWell(
           onTap: () => NavigatorManager().navigateToDestination(
             context,
-            FetchNetworkDetailedDataScreen(productId: context.read<FetchDataProvider>().products[index].id.toString()),
+            FetchNetworkDetailedDataScreen(
+                productId: context
+                    .read<FetchDataProvider>()
+                    .products[index]
+                    .id
+                    .toString()),
           ),
           child: ListTile(
-            title: Text(context.watch<FetchDataProvider>().products[index].title.toString()),
-            subtitle: Text(context.watch<FetchDataProvider>().products[index].price.toString()),
+            title: Text(context
+                .watch<FetchDataProvider>()
+                .products[index]
+                .title
+                .toString()),
+            subtitle: Text(context
+                .watch<FetchDataProvider>()
+                .products[index]
+                .price
+                .toString()),
           ),
         ),
       ),
