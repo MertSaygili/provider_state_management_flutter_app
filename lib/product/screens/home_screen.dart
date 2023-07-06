@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider_state_management_flutter_app/product/screens/counter/consumer_counter_screen.dart';
+import 'package:provider_state_management_flutter_app/product/screens/screen_communication/first_screen.dart';
 
 import '../../feature/constants/strings.dart';
 import '../navigator.dart';
@@ -38,6 +39,10 @@ class _PageColumn extends StatelessWidget {
           onPressed: () => NavigatorManager().navigateToDestination(context, const ConsumeerCounterScreen()),
           child: const Text(Strings.consumerIncrementScreenTitle),
         ),
+        ElevatedButton(
+          onPressed: () => NavigatorManager().navigateToDestination(context, const FirstScreen()),
+          child: const Text(Strings.screenCommunicationScreenTitle),
+        )
       ],
     );
   }
